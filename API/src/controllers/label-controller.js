@@ -21,6 +21,12 @@ exports.createLabel = async (req, res) => {
     }
 
     try {
+        const data = await Label.find({ name: req.body.name })
+        if (data.length > 0) {
+            res.status(422).send({ message: 'Label already created' });
+            return;
+        }
+
         const product = new Label({
             name: req.body.name,
             description: req.body.description,
@@ -32,7 +38,7 @@ exports.createLabel = async (req, res) => {
 
         res.status(201).send({ message: 'Label successfully created', data: product });
     } catch (e) {
-        res.status(500).send({ message: 'Error when creating a new to do' });
+        res.status(500).send({ message: 'Error when creating a new Label' });
         console.log(e);
     }
 };
@@ -40,6 +46,13 @@ exports.createLabel = async (req, res) => {
 // update
 exports.updateLabel = async (req, res) => {
     try {
+
+        const check = await Label.find({ name: req.body.name })
+        if (check.length > 0) {
+            res.status(422).send({ message: 'Label already created' });
+            return;
+        }
+
         const filter = { _id: req.body._id }
 
         const data = await Label.findOneAndUpdate(filter, {
@@ -51,7 +64,7 @@ exports.updateLabel = async (req, res) => {
         res.status(201).send({ message: 'Label successfully updated', data: data });
     }
     catch (e) {
-        res.status(500).send({ message: 'Error when updating a to do' });
+        res.status(500).send({ message: 'Error when updating a label' });
         console.log(e);
     }
 }

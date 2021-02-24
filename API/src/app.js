@@ -18,7 +18,7 @@ mongoose.connect(process.env.DATABASE_CONNECTION_STRING_MEUSLANCHES, {
 const db = mongoose.connection;
 
 db.on('connected', () => {
-    console.log('Mongoose To Do connection is open');
+    console.log('Mongoose Meus Lanches connection is open');
 });
 
 db.on('error', err => {
@@ -50,7 +50,10 @@ app.use('/', indexRoutes);
 const productsRoutes = require('../routes/product-routes');
 app.use('/products', productsRoutes);
 
-const labelRoutes = require('../routes/label-routes');
-app.use('/label', labelRoutes);
+const labelsRoutes = require('../routes/label-routes');
+app.use('/labels', labelsRoutes);
+
+const ordersRoutes = require('../routes/order-routes');
+app.use('/orders', ordersRoutes);
 
 module.exports = app;

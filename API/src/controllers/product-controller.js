@@ -21,6 +21,12 @@ exports.createProduct = async (req, res) => {
     }
 
     try {
+        const data = await Product.find({ name: req.body.name })
+        if (data.length > 0) {
+            res.status(422).send({ message: 'Product already created' });
+            return;
+        }
+
         const product = new Product({
             name: req.body.name,
             description: req.body.description,
@@ -34,7 +40,7 @@ exports.createProduct = async (req, res) => {
 
         res.status(201).send({ message: 'Product successfully created', data: product });
     } catch (e) {
-        res.status(500).send({ message: 'Error when creating a new to do' });
+        res.status(500).send({ message: 'Error when creating a new product' });
         console.log(e);
     }
 };
@@ -42,6 +48,12 @@ exports.createProduct = async (req, res) => {
 // update
 exports.updateProduct = async (req, res) => {
     try {
+        const check = await Product.find({ name: req.body.name })
+        if (check.length > 0) {
+            res.status(422).send({ message: 'Product already created' });
+            return;
+        }
+
         const filter = { _id: req.body._id }
 
         const data = await Product.findOneAndUpdate(filter, {
@@ -55,7 +67,7 @@ exports.updateProduct = async (req, res) => {
         res.status(201).send({ message: 'Product successfully updated', data: data });
     }
     catch (e) {
-        res.status(500).send({ message: 'Error when updating a to do' });
+        res.status(500).send({ message: 'Error when updating a product' });
         console.log(e);
     }
 }
