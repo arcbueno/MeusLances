@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.x"
+  },
   "scripts": {
-    "dev": "node node_modules/nodemon/bin/nodemon bin/server"
+    "dev": "node node_modules/nodemon/bin/nodemon bin/server",
+    "start": "node node_modules/nodemon/bin/nodemon bin/server"
   },
   "keywords": [],
   "author": "Pedro Bueno <arcbueno.com.br>",
@@ -15,10 +19,10 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
     "mongoose": "^5.9.20",
-    "mongoose-sequence": "^5.2.2"
+    "mongoose-sequence": "^5.2.2",
+    "nodemon": "^2.0.7"
   },
   "devDependencies": {
-    "mongoose-auto-increment": "^5.0.1",
-    "nodemon": "^2.0.7"
+    "mongoose-auto-increment": "^5.0.1"
   }
 }

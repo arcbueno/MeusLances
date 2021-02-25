@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING_MEUSLANCHES, {
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost:27017/MeusLanches", {
     useUnifiedTopology: true,
     useFindAndModify: true,
     useNewUrlParser: true,
