@@ -1,4 +1,5 @@
 const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const { check } = require('express-validator');
 require('dotenv').config();
@@ -8,11 +9,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/MeusLanches", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://arcbueno:%2AJava1334@meuslanches.b8wrl.mongodb.net/meusLanches?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
-    useFindAndModify: true,
-    useNewUrlParser: true,
-    useCreateIndex: true
+    useNewUrlParser: true
 });
 
 const db = mongoose.connection;

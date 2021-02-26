@@ -17,7 +17,7 @@ function normalizePort(val) {
   return false;
 }
 
-const port = normalizePort(process.env.PORT || 3000);
+const port = normalizePort(process.env.PORT || 3030);
 app.set('port', port);
 
 // error handler
@@ -25,7 +25,7 @@ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
-  
+
   const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   switch (error.code) {

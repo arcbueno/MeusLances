@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "env": {
-    "MONGODB_URI": "@mongodb-uri"
+    "MONGODB_URI": "@mongo-uri"
   },
   "scripts": {
     "dev": "node node_modules/nodemon/bin/nodemon bin/server",
