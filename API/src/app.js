@@ -1,5 +1,4 @@
 const express = require('express');
-const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
 const { check } = require('express-validator');
 require('dotenv').config();
