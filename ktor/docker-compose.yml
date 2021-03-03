@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  meus_lanches_db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_DB: "meuslanchesdb"
+      POSTGRES_USER: "arcbueno"
+      POSTGRES_PASSWORD: "Ol@b1r1nt0"
+      POSTGRES_ROOT_PASSWORD: "Ol@b1r1nt0"
+    ports:
+      - "3400:3400"
