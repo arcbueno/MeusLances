@@ -1,0 +1,6 @@
+{
+  "name": "Meus Lanches API",
+  "description": "Meus Lanches API Rest for a example application",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
