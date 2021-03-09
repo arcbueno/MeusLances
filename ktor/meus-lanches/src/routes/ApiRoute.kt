@@ -5,5 +5,7 @@ import io.ktor.routing.*
 fun Routing.apiRoute(){
     route("/api/v1"){
         products()
+        categories()
+        orders()
     }
 }

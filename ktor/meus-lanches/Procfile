@@ -1,1 +1,1 @@
-web:    java -jar target/meuslanches.jar
+web:    java -jar build/libs/meus-lanches-0.0.1-SNAPSHOT-all.jar

@@ -1,5 +1,7 @@
 package br.com.arcbueno
 
+import br.com.arcbueno.models.Categories
+import br.com.arcbueno.models.Orders
 import br.com.arcbueno.models.Products
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -25,5 +27,11 @@ fun Application.initDB() {
 private fun createTables() = transaction {
     SchemaUtils.create(
         Products
+    )
+    SchemaUtils.create(
+        Categories
+    )
+    SchemaUtils.create(
+        Orders
     )
 }

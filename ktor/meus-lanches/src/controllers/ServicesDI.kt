@@ -6,4 +6,6 @@ import org.kodein.di.singleton
 
 fun DI.MainBuilder.bindServices(){
     bind<ProductController>() with singleton { ProductController() }
+    bind<CategoryController>() with singleton { CategoryController() }
+    bind<OrderController>() with singleton { OrderController() }
 }
