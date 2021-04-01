@@ -1,30 +1,41 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:meus_lanches/main.dart';
+import 'package:meus_lanches/api/product_api.dart';
+import 'package:meus_lanches/model/product.dart';
+import 'package:meus_lanches/service/product_service.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  var service = ProductService(
+    ProductApi(),
+  );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('Should create a new product instance', () {
+    var produto = Product(
+        id: null,
+        name: "Criado para testar",
+        description: "unit test com saulo",
+        category: 'Teste',
+        price: 1000);
+    expect(produto.name, isNotNull);
+    expect(produto.name, isNotEmpty);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test('Should create a new product instance and throw assert error', () {
+    expect(() => Product(), throwsAssertionError);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Should return true after creating new product', () async {
+    var customProduct = Product(
+        id: null,
+        name: "Criado para testar",
+        description: "unit test com saulo",
+        category: 'Teste',
+        price: 1000);
+    var result = await service.newProduct(customProduct);
+    expect(result, true);
+  });
+
+  test('Should return a list after requesting', () async {
+    var result = await service.getAll();
+    expect(result, isNotNull);
   });
 }
