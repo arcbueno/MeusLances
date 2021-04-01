@@ -3,6 +3,7 @@ import 'package:meus_lanches/model/product.dart';
 import 'package:meus_lanches/pages/home_page/home_viewmodel.dart';
 import 'package:meus_lanches/service/product_service.dart';
 import 'package:meus_lanches/service_locator.dart';
+import 'package:meus_lanches/widgets/home_list_item.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -29,10 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: snap.data.length,
               itemBuilder: (context, index) {
                 var item = snap.data[index];
-                return ListTile(
-                  leading: Icon(Icons.fastfood),
-                  title: Text(item.name),
-                );
+                return HomeListItem(item: item);
               },
             );
           },
