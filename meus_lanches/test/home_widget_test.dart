@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meus_lanches/main.dart';
 import 'package:meus_lanches/pages/home_page/home_page.dart';
 import 'package:meus_lanches/service_locator.dart';
 import 'package:meus_lanches/widgets/home_list_item.dart';
@@ -14,7 +15,7 @@ main() {
           home: MyHomePage(),
         ),
       );
-      final listItem = find.byType(HomeListItem);
+      final listItem = find.byType(Scaffold);
       expect(listItem, findsWidgets);
     },
   );

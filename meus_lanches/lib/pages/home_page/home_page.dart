@@ -13,7 +13,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _viewModel = HomeViewModel(getIt.get<ProductService>());
+  HomeViewModel _viewModel;
+
+  @override
+  void initState() {
+    _viewModel = HomeViewModel(getIt.get<ProductService>());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,5 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
       //   child: Icon(Icons.add),
       // ),
     );
+  }
+
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
   }
 }
